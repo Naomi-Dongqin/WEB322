@@ -1,0 +1,209 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+   
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+   width:1200px;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border: 2px solid #04bd76;
+    align-items: center;
+}
+
+nav a {
+    color:#04bd76;
+    text-decoration:solid;
+}
+nav a:hover{
+    color:chocolate;
+}
+
+
+#logo{
+    width:120px;
+    height:auto;
+    margin: 40px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden; 
+}
+.hero img{
+    width:100%;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.hero-text{
+    position: absolute;
+    top: 30%;
+    left:40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 80%; 
+}
+/* Style the input field and button */
+.hero-text .search-form {
+    position: relative;
+}
+
+.hero-text input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 20px;
+    width: 60%; 
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.hero-text input[type="submit"] {
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ea7500;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Style the input field on focus */
+.hero-text input:focus {
+    border-color: #4CAF50; 
+    outline: none;
+}
+
+/* Content section styles */
+
+.content-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 40px; 
+    padding: 10px; 
+}
+
+.feature {
+    text-align: center;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+}
+
+.feature img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.feature h2 {
+    font-size: 1.5em;
+    color:#ea7500;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5; 
+}
+
+/* Style the search buttons */
+.search-button {
+    background-color: #ffb300;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styles */
+footer {
+    background-color:#c0ca33;
+    color: #fff;
+    padding: 20px;
+    text-align:left;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-menu, .social-media-links, .company-information, .contact-info, .payment {
+    width: 20%; 
+    margin-bottom: 20px;
+}
+
+.footer-menu a, .social-media-links p, .company-information p, .contact-info p {
+    color: #fff;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+.social-media-links h4, .payment h4 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.social-media-row {
+    display: flex;
+    justify-content: space-between;
+    width:150px;
+}
+
+.social-media-links img {
+    width: 30px;
+    height: auto;
+    
+}
+
+
+.payment img {
+    width: 50px; 
+    height: auto;
+    margin-top: 10px;
+}
+
+.copyright-statement {
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+

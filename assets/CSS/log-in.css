@@ -1,0 +1,38 @@
+.container {
+    border: 2px solid #04bd76;
+    border-radius: 5px;
+    color:#ffb300;
+    padding: 20px;
+    margin: 20px auto; 
+    width: 40%;
+    box-sizing: border-box; 
+}
+
+.container p{
+    font-size:30px;
+    font-family: serif;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #04bd76;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

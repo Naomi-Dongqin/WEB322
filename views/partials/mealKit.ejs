@@ -1,0 +1,13 @@
+<div class="meal-kit-card">
+    <img src="<%= mealKit.imageUrl %>" alt="<%= mealKit.title %>">
+    <div class="meal-kit-details">
+        <h3><%= mealKit.title %></h3>
+        <p><%= mealKit.description %></p>
+        <ul>
+            <li>Includes: <%= mealKit.includes %></li>
+            <li>Price: $<%= mealKit.price.toFixed(2) %></li>
+            <li>Cooking Time: <%= mealKit.cookingTime %> minutes</li>
+            <li>Servings: <%= mealKit.servings %></li>
+        </ul>
+    </div>
+</div>

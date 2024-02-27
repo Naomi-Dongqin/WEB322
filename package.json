@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "eatery_v1",
+  "version": "1.0.0",
+  "description": "The first assignment to create the basic structure of pages.",
+  "main": "server.js",
+  "author": "Dongqin Ran (Naomi)",
+  "license": "ISC",
+  "keywords": [
+    "nodeJS",
+    "express",
+    "html",
+    "css"
+  ]
+}
