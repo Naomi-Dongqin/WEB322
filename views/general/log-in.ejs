@@ -7,13 +7,19 @@
 <!-- Log in form -->
 <main>
     <div class="container">
-        <form action="/login" method="POST">
+        <form action="/log-in" method="post">
             <p>Welcome back!</p>
             <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Email Address" required>
-            </div>
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="email">Email*</label>
+                <input type="text" id="email" name="email" placeholder="abc@email.com" value="<%=values.email%>"><br/><br/>
+                <% if( validationMessage.email){%>
+                  <span style="color:red"><%= validationMessage.email%></span><br/><br/>
+               <% } %>
+                <label for="password">Password*</label>
+                <input type="text" id="password" name="password" placeholder="Password" value="<%=values.password%>"><br/><br/>
+                <%if(validationMessage.password){%>
+                   <span style="color:red"><%=validationMessage.password%></span><br/><br/>
+                <%}%>
             </div>
             <button type="submit">Log In</button>
         </form>

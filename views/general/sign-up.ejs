@@ -10,25 +10,28 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <form action="/signup" method="POST">
+            <form action="/sign-up" method="post">
                 <div>
                 <p>Sign up without any cost!</p>
-            </div>
+          
                 <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="first name" required>
-                </div>
-                <div class="form-group">
+                    <label for="first_name">First Name*</label>
+                    <input type="text" id="first_name" name="firstName" placeholder="first name" value="<%=values.firstName%>" ><br>
+                    <% if(validationSignUpMessage.firstName){%>
+                        <span style="color:red"><%= validationSignUpMessage.firstName%></span><br/><br/>
+                     <% } %>
                     <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" placeholder="last name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="email address" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="password" required>
+                    <input type="text" id="last_name" name="lastName" placeholder="last name" value="<%=values.lastName%>" ><br>
+                    <label for="email">Email*</label>
+                    <input type="text" id="email" name="email" placeholder="name@example.com" value="<%=values.email%>" ><br>
+                    <% if(validationSignUpMessage.email){%>
+                        <span style="color:red"><%= validationSignUpMessage.email%></span><br/><br/>
+                     <% } %>
+                    <label for="password">Password*</label>
+                    <input type="text" id="password" name="password" placeholder="password" value="<%=values.password%>" ><br>
+                    <% if(validationSignUpMessage.password){%>
+                        <span style="color:red"><%= validationSignUpMessage.password%></span><br/><br/>
+                     <% } %>
                 </div>
                 <div class="signup-button">
                 <button type="submit">Sign Up</button>

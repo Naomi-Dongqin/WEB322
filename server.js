@@ -14,6 +14,11 @@ const path = require("path");
 const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
 
+// Set up dotenv
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/keys.env" });
+
+//Set up express
 const app = express();
 
 // Require the mealkit-util module
@@ -25,7 +30,10 @@ app.use(express.static(path.join(__dirname, "/assets")));
 // set up EJS
  app.set("view engine", "ejs");
  app.set("layout", "layouts/main");
-app.use(expressLayouts);
+ app.use(expressLayouts);
+
+// set up body-parse
+app.use(express.urlencoded({ extended: false }));
  
 // Load the controllers into express
 const generalController = require("./controllers/generalController");

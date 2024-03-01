@@ -8,6 +8,7 @@
         <title>Home</title>
         <!-- Link the CSS file -->
         <link rel="stylesheet" href="/CSS/site.css">
+        <link rel="stylesheet" href="/CSS/home.css">
     </head>
     <body>
        
@@ -47,15 +48,22 @@
                 </section>
       
 <!-- Featured meal kits -->
+<section id="featured">
+    <h2> Featured Mealkits</h2>
+</section>
 <section class="featured-meal-kits">
     <!-- Iterate and include mealkit partial -->
-    <% mealKits.forEach(function(mealKit) { %>
-        <% if(mealKit.Featured) { %>
-        <%- include('../partials/mealkit', mealKit) %>   
+    <div class="container"> 
+    <% mealKits.forEach(function(mealKit) { %>      
+        <% if(mealKit.featuredMealKit) { %>
+        <%- include('../partials/mealKit', {mealKit:mealKit}) %>   
         <% } %>
+  
    <% }); %>
-
+</div>
 </section>
+
+
 </body>
 
     

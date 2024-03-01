@@ -9,7 +9,7 @@ let mealKits = [
         cookingTime: 25,
         servings: 2,
         imageUrl: "/images/classical_01.jpg",
-        featuredMealKit: true
+        featuredMealKit: false
     },
     {
         title: "Teriyaki Chicken with Steamed Vegetables",
@@ -20,7 +20,7 @@ let mealKits = [
         cookingTime: 30,
         servings: 2,
         imageUrl: "/images/classical_02.jpg",
-        featuredMealKit: true
+        featuredMealKit: false
     },
     {
         title: "Vegetarian Chili with Cornbread",
@@ -63,7 +63,7 @@ let mealKits = [
         price: 21.99,
         cookingTime: 20,
         servings: 3,
-        imageUrl: "/images/med_01.jpg",
+        imageUrl: "/images/med_02.jpg",
         featuredMealKit: false
     }
 ];
