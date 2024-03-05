@@ -101,8 +101,8 @@ router.post("/sign-up", (req, res) => {
         sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         // construct an email structure
         const msg = {
-        to:"naomiran1989@gmail.com",
-        from:"dran@myseneca.ca",
+        to:email,
+        from:"naomiran1989@gmail.com",
         subject: "Congratuate to become a member of Fresh Eatery",
         html:
         `Visitor's Email Address:${email}<br>
@@ -165,7 +165,9 @@ router.post("/log-in", (req, res) => {
         validationMessage.password = "password is required";
     }
     if (validated) {
-        res.send("Welcome!");  
+        res.render("general/welcome", {
+            title: "Welcome"
+        });
     }
     else {
         res.render("general/log-in", {
