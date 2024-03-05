@@ -6,7 +6,7 @@ No part of this assignment has been copied manually or electronically from any o
 
 Student Name  : Dongqin Ran
 Student Email : dran@myseneca.ca
-Course/Section: WEB322/NXX
+Course/Section: WEB322/NAA
 
 ## Project URLs
 GitHub Repo   : https://github.com/Naomi-Dongqin/WEB322
