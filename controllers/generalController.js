@@ -103,9 +103,11 @@ router.post("/sign-up", (req, res) => {
         const msg = {
         to:email,
         from:"naomiran1989@gmail.com",
-        subject: "Congratuate to become a member of Fresh Eatery",
+        subject: "Welcome to registrate",
         html:
-        `Visitor's Email Address:${email}<br>
+            `Congratuate to become a member of Fresh Eatery<br>
+             Your Email Address:${email}<br>
+        Student Name:Dongqin Ran <br>
        `   
         };
 // send the email

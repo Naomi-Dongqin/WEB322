@@ -37,9 +37,9 @@ app.use(express.urlencoded({ extended: false }));
  
 // Load the controllers into express
 const generalController = require("./controllers/generalController");
-const mealKitsController = require("./controllers/mealKitsController");
+
 app.use("/", generalController);
-app.use("/mealkits", mealKitsController);
+
 
  
 
