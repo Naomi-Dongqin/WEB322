@@ -16,7 +16,7 @@
                   <span style="color:red"><%= validationMessage.email%></span><br/><br/>
                <% } %>
                 <label for="password">Password*</label>
-                <input type="text" id="password" name="password" placeholder="Password" value="<%=values.password%>"><br/><br/>
+                <input type="password" id="password" name="password" placeholder="Password" value="<%=values.password%>"><br/><br/>
                 <%if(validationMessage.password){%>
                    <span style="color:red"><%=validationMessage.password%></span><br/><br/>
                 <%}%>

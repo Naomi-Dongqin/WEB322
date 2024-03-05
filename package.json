@@ -10,9 +10,9 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "eatery_v1",
-  "version": "1.0.0",
-  "description": "The first assignment to create the basic structure of pages.",
+  "name": "eatery_v3",
+  "version": "3.0.0",
+  "description": "create webPages with ejs and module",
   "main": "server.js",
   "author": "Dongqin Ran (Naomi)",
   "license": "ISC",
@@ -20,6 +20,8 @@
     "nodeJS",
     "express",
     "html",
-    "css"
+    "css",
+    "ejs",
+    "ejs-layouts"
   ]
 }

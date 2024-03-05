@@ -51,17 +51,27 @@ router.post("/sign-up", (req, res) => {
         validationSignUpPassed = false;
         validationSignUpMessage.firstName = "Please enter your first name";
     }
-    else if (firstName.length === 0) {
+    else if (firstName.trim().length === 0 || firstName==="" || firstName===null) {
         validationSignUpMessage.firstName = "first name must contain at least 1 character";
         validationSignUpPassed = false;
     }
+    // validate last name (not null and not empty)
+    if (typeof (lastName) !== "string") {
+        validationSignUpPassed = false;
+        validationSignUpMessage.lastName = "Please enter your last name";
+    }
+    else if (lastName.trim().length === 0 || lastName==="" || lastName===null) {
+        validationSignUpMessage.lastName = "last name must contain at least 1 character";
+        validationSignUpPassed = false;
+    }
+    
     //validate email (regular expression)
     const regExp = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/gm;
     if (typeof (email) !== "string") {
         validationSignUpPassed = false;
         validationSignUpMessage.email = "email is required";
     }
-    else if (email.length === 0) {
+    else if (email.trim().length === 0 || email===null) {
         validationSignUpPassed = false;
         validationSignUpMessage.email = "email must contain at least 1 character";
     }
@@ -72,11 +82,11 @@ router.post("/sign-up", (req, res) => {
     //validate password (length is 8-12 and at least one character,one digit, one symbol)
     const passwordReg = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\$@#%^&*()\\[\]{}|\\/~`!?"';:_]){8,12}/g;
    
-    if (typeof (password) !== "string") {
+    if (password === null) {
         validationSignUpPassed = false;
         validationSignUpMessage.password = "password is required";
     }
-    else if (password.length === 0) {
+    else if (password.trim().length === 0) {
         validationSignUpPassed = false;
         validationSignUpMessage.password = "password must contain at least 1 character";
     }
@@ -142,7 +152,7 @@ router.post("/log-in", (req, res) => {
     let validated = true;
     let validationMessage = {};
 
-    if (typeof (email) !== "string" || email.trim().length === 0 ) {
+    if (typeof (email) !== "string" || email.trim().length === 0 || email===null) {
         validated = false;
         validationMessage.email = "You must enter one email address";
     }
@@ -150,7 +160,7 @@ router.post("/log-in", (req, res) => {
         validated = false;
         validationMessage.email = "Email address has at least 1 character";
     }
-    if (typeof (password) !== "string" || password.trim().length === 0) {
+    if (password.trim().length === 0 || password===null) {
         validated = false;
         validationMessage.password = "password is required";
     }
