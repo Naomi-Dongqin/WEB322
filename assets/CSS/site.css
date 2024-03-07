@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    font-size:1em;
     margin: 0;
     padding: 0;
 }
@@ -15,7 +16,7 @@ header {
 }
 
 nav {
-   width:1200px;
+    width:1200px;
     display: flex;
     justify-content: space-around;
     padding: 10px;
@@ -41,7 +42,10 @@ nav a:hover{
 .hero{
     position:relative;
     overflow:hidden; 
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
 }
+
 .hero img{
     width:100%;
     padding-right: 30px;
@@ -56,6 +60,14 @@ nav a:hover{
     color: #fff;
     width: 80%; 
 }
+   /* Media query for smaller screens */
+   @media only screen and (max-width: 768px) {
+    body {
+        font-size: 50%; /* Half the default font size */
+    }
+    
+}
+
 /* Style the input field and button */
 .hero-text .search-form {
     position: relative;
@@ -63,7 +75,7 @@ nav a:hover{
 
 .hero-text input[type="text"] {
     padding: 10px;
-    font-size: 1em;
+   
     margin-top: 20px;
     width: 60%; 
     box-sizing: border-box;
@@ -75,7 +87,7 @@ nav a:hover{
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: 1em;
+   
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #ea7500;
@@ -88,6 +100,8 @@ nav a:hover{
     border-color: #4CAF50; 
     outline: none;
 }
+
+
 
 /* Content section styles */
 
@@ -118,13 +132,13 @@ nav a:hover{
 }
 
 .feature h2 {
-    font-size: 1.5em;
+   
     color:#ea7500;
     margin-bottom: 10px;
 }
 
 .feature p {
-    font-size: 1em;
+    
     color: #666;
     line-height: 1.5; 
 }
@@ -145,6 +159,7 @@ nav a:hover{
 }
 
 /* Footer styles */
+
 footer {
     background-color:#c0ca33;
     color: #fff;
@@ -153,13 +168,15 @@ footer {
 }
 
 .footer-columns {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-around;
-    flex-wrap: wrap;
+
 }
 
+
 .footer-menu, .social-media-links, .company-information, .contact-info, .payment {
-    width: 20%; 
+    width: 100%; 
     margin-bottom: 20px;
 }
 
@@ -188,14 +205,33 @@ footer {
 
 
 .payment img {
-    width: 50px; 
+    width: 30px; 
     height: auto;
     margin-top: 10px;
 }
 
 .copyright-statement {
-    font-size: 0.9em;
+    
     margin-top: 20px;
+}
+ /* Media query for smaller screens */
+ @media only screen and (max-width: 200px) {
+    .footer-columns {
+        grid-template-columns: 1fr; /* Display only one column on smaller screens */
+    }
+
+    footer {
+        padding: 20px; /* Adjust padding as needed */
+    }
+
+    .payment img {
+        width: 30%; /* Adjust image width for smaller screens */
+    }
+     .social-media-links img {
+        width: 30%; /* Adjust image width for smaller screens */
+    }
+    
+
 }
 
 

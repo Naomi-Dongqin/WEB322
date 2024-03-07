@@ -26,6 +26,12 @@ const mealKitsByCategory = mealKitUtil.getMealKitsByCategory(allMealKits);
     });
 });
 
+router.get("/welcome", (req, res) => {
+    res.render("general/welcome", {
+        title: "welcome"
+    });
+});
+
 // Setup a route to return the signup page
 router.get("/sign-up", (req, res) => {
     res.render("general/sign-up", {
@@ -105,7 +111,7 @@ router.post("/sign-up", (req, res) => {
         from:"naomiran1989@gmail.com",
         subject: "Welcome to registrate",
         html:
-            `Congratuate to become a member of Fresh Eatery<br>
+            `Hi, ${firstName} ${lastName}, congratuate to become a member of Fresh Eatery<br>
              Your Email Address:${email}<br>
         Student Name:Dongqin Ran <br>
        `   
@@ -167,9 +173,7 @@ router.post("/log-in", (req, res) => {
         validationMessage.password = "password is required";
     }
     if (validated) {
-        res.render("general/welcome", {
-            title: "Welcome"
-        });
+        res.redirect("/welcome");
     }
     else {
         res.render("general/log-in", {

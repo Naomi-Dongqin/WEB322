@@ -12,24 +12,12 @@
 
 .container {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 20px;
     padding: 0 40px; /* Adjust padding */
 }
 
-/* Media queries for responsive design */
-@media (min-width: 768px) {
-    /* 3 images per row on large screens */
-    .container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
 
-@media (max-width: 767px) {
-    /* 1 image per row on small screens */
-    .container {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
 
 /* Style for category section */
 .featured-meal-kits {
@@ -48,7 +36,7 @@
 .meal-kit-card img {
     width: 100%;
     height: auto;
-    display: block;
+   
 }
 
 /* Style for meal kit card details */
