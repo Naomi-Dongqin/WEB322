@@ -9,20 +9,45 @@
 * Course/Section: WEB322/NAA
 *
 **************************************************************************************/
-
-const path = require("path");
-const express = require("express");
-const expressLayouts = require('express-ejs-layouts');
-
+// npm init
+// npm express
+// npm i ejs express-ejs-layouts
+// npm i dotenv
+// npm install mongoose
+// npm i bcryptjs
+// npm i "@sendgrid/mail"
+// npm i express-session
 // Set up dotenv
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config/keys.env" });
 
+const path = require("path");
+const express = require("express");
+
+
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require("mongoose");
+const session = require("express-session");
+
+
+
+// Require the mealkit-util module
+const mealKitUtil = require('./models/mealKit-util');
+
+ 
+// Load the controllers into express
+const generalController = require("./controllers/generalController");
+const mealKitsController = require("./controllers/mealKitsController");
+
 //Set up express
 const app = express();
 
-// Require the mealkit-util module
-const mealKitUtil = require('./modules/mealKit-util');
+// set up express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Make the "assets" folder public (aka Static)
 app.use(express.static(path.join(__dirname, "/assets")));
@@ -33,16 +58,17 @@ app.use(express.static(path.join(__dirname, "/assets")));
  app.use(expressLayouts);
 
 // set up body-parse
-app.use(express.urlencoded({ extended: false }));
- 
-// Load the controllers into express
-const generalController = require("./controllers/generalController");
+app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+    // save the user to the global variable "locals"
+    res.locals.user = req.session.user;
+    next();
+});
+
+// routers
 app.use("/", generalController);
-
-
- 
-
+app.use("/mealKits/", mealKitsController);
 
    // Get meal kits grouped by category using the getMealKitsByCategory() function from mealkit-util
    const mealKits = mealKitUtil.getAllMealKits(); 
@@ -76,7 +102,16 @@ const HTTP_PORT = process.env.PORT || 8080;
 function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
 }
+
   
 // Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here
 // because sometimes port 80 is in use by other applications on the machine
-app.listen(HTTP_PORT, onHttpStart);
+//set up moogoose
+mongoose.connect(process.env.MONGODB_CNNECTION_STRING)
+    .then(() => {
+        console.log("Connected to MongoDB database");
+        app.listen(HTTP_PORT, onHttpStart);
+    })
+    .catch(err => {
+        console.log(`Can't cnnect to the MongoDB database: ${err}`);
+})

@@ -4,7 +4,7 @@
 <!-- Sign up form -->
 <head>
      <!-- Link the CSS file -->
-     <link rel="stylesheet" href="/CSS/sign-up.css">
+     <link rel="stylesheet" href="/css/sign-up.css">
 </head>
  
     <!-- Main Content -->
@@ -28,7 +28,7 @@
                         <span style="color:red"><%= validationSignUpMessage.email%></span><br/><br/>
                      <% } %>
                     <label for="password">Password*</label>
-                    <input type="password" id="password" name="password" placeholder="password" value="<%=values.password%>" ><br>
+                    <input type="text" id="password" name="password" placeholder="password" value="<%=values.password%>" ><br>
                     <% if(validationSignUpMessage.password){%>
                         <span style="color:red"><%= validationSignUpMessage.password%></span><br/><br/>
                      <% } %>

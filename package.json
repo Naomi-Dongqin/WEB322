@@ -1,27 +1,25 @@
 {
-  "dependencies": {
-    "@sendgrid/mail": "^8.1.1",
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-ejs-layouts": "^2.5.1"
-  },
+  "name": "assign4",
+  "version": "1.0.0",
+  "description": "I declare that this assignment is my own work in accordance with the Seneca Academic Policy.\r No part of this assignment has been copied manually or electronically from any other source\r (including web sites) or distributed to other students.",
+  "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "name": "eatery_v3",
-  "version": "3.0.0",
-  "description": "create webPages with ejs and module",
-  "main": "server.js",
-  "author": "Dongqin Ran (Naomi)",
-  "license": "ISC",
   "keywords": [
-    "nodeJS",
-    "express",
-    "html",
-    "css",
-    "ejs",
-    "ejs-layouts"
-  ]
+    "mongodb"
+  ],
+  "author": "Dongqin Ran",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.2.2"
+  }
 }
