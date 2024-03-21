@@ -1,20 +1,14 @@
+<head>
+    <!-- Other head content -->
+    <link rel="stylesheet" href="/CSS/site.css">
+</head>
+
 <nav id="navbar">
     <!-- Navbar content goes here -->
-    <a href="/">Home</a>
-    <a href="/mealKits/on-the-menu">On-the-menu</a>
-        
-    <% if (typeof user === "undefined") { %>
-        <a href="/sign-up">Sign-up</a>
-        <a href="/log-in">Log-in</a>
-    <% } else { %> 
-        <% if (role === "customer") { %>
-            <span style="color: blueviolet;">Hello <a href="/cart"><%= user.firstName %></a></span>
-        <% } else { %>
-            <%= role %>
-            <span style="color: blueviolet;">Hello <a href="/mealKits/list"><%= user.firstName %></a></span>
-        <% } %>
-        <a href="/log-out">Log-out</a>
-    <% } %>
+        <a href="/">HOME</a>
+        <a href="/on-the-menu">ON THE MENU</a>
+        <a href="/sign-up">SIGN UP</a>
+        <a href="/log-in">LOG IN</a>
 
-    <div class="dropdown-icon">&#9776;</div> <!-- This icon will show on smaller screens -->
+        <div class="dropdown-icon">&#9776;</div> <!-- This icon will show on smaller screens -->
 </nav>

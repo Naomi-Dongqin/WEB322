@@ -1,38 +1,27 @@
 
 <% layout = '../layouts/main' %>
 <head>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/CSS/log-in.css">
 </head>
 
 <!-- Log in form -->
 <main>
     <div class="container">
-        <% if(typeof errors !=="undefined" && errors.length!==0) { %>
-            <% errors.forEach(err=> { %>
-              <p style="color:red;"><%= err %></p>
-             <% }) %>
-         <% } %>
-
         <form action="/log-in" method="post">
             <p>Welcome back!</p>
             <div class="form-group">
                 <label for="email">Email*</label>
-                <input type="text" id="email" name="email"  value="<%=values.email%>"><br/><br/>
-               
-               
+                <input type="text" id="email" name="email" placeholder="abc@email.com" value="<%=values.email%>"><br/><br/>
+                <% if( validationMessage.email){%>
+                  <span style="color:red"><%= validationMessage.email%></span><br/><br/>
+               <% } %>
                 <label for="password">Password*</label>
-                <input type="password" id="password" name="password"  value="<%=values.password%>"><br/><br/>
-               ] 
-
-                <input type="radio" id="data entry clerk" name="role" value="data entry clerk" checked />
-                <label for="data entry clerk">data entry clerk</label>
-                 
-                <input type="radio" id="customer" name="role" value="customer" />
-                <label for="ustomer">customer</label>
+                <input type="password" id="password" name="password" placeholder="Password" value="<%=values.password%>"><br/><br/>
+                <%if(validationMessage.password){%>
+                   <span style="color:red"><%=validationMessage.password%></span><br/><br/>
+                <%}%>
             </div>
-            
-            <button class="btn bg-primary-content btn-outline btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg">Log In</button>
-           
+            <button type="submit">Log In</button>
         </form>
     </div>
 </main>
