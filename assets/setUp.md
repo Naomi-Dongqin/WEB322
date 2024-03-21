@@ -3,29 +3,31 @@
  npm install -D tailwindcss
  npx tailwindcss init
 
+  -- create tailwind.css file
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
  -- modify tailwind.config.js  
- content:["./views/*.ejs"],
+ content: [`./views/*.ejs`],
 
  -- modify packageJson, build main.css file from tailwind
   "scripts": {
  "tw:build":"tailwindcss build -i ./assets/css/tailwind.css -o ./assets/css/main.css"
   }
 
-  -- create tailwind.css file
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 
--- add stylesheet link to home.ejs
+-- add stylesheet link to cart.ejs
  <link rel="stylesheet" href="/css/main.css">
+
+ <div class="w-[150px] h-[80px] shadow-2xl bg-white rounded-lg flex justify-center items-center">
+  <p class="text-center">shadow-2xl</p>
+</div>
 
 -- run tw:build to create main.css file automatically
 npm run tw:build
 
--- add some tailwind format style in home.ejs file, then create a new terminal
-npm run tw:build
--- refresh the webpage, the format style will apply
 
 
 --install daisyUI
@@ -33,6 +35,7 @@ npm i @tailwindcss/typography daisyui
 
 --Register daisyUI as a plugin (tailwind.config.js):
  plugins: [require('@tailwindcss/typography'),require('daisyui')],
+ 
 
 
 -- run tw:build to create main.css file automatically

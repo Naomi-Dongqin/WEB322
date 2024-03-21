@@ -17,37 +17,22 @@
 // npm i bcryptjs
 // npm i "@sendgrid/mail"
 // npm i express-session
-// Set up dotenv
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config/keys.env" });
 
 const path = require("path");
 const express = require("express");
-
-
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require("mongoose");
 const session = require("express-session");
 
-
-
-// Require the mealkit-util module
-const mealKitUtil = require('./models/mealKit-util');
-
- 
-// Load the controllers into express
-const generalController = require("./controllers/generalController");
-const mealKitsController = require("./controllers/mealKitsController");
+// Set up dotenv
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/keys.env" });
 
 //Set up express
 const app = express();
 
-// set up express-session
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
-}));
+// Require the mealkit-util module
+const mealKitUtil = require('./modules/mealKit-util');
 
 // Make the "assets" folder public (aka Static)
 app.use(express.static(path.join(__dirname, "/assets")));
@@ -60,13 +45,27 @@ app.use(express.static(path.join(__dirname, "/assets")));
 // set up body-parse
 app.use(express.urlencoded({ extended: true }));
 
+// set up express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
 app.use((req, res, next) => {
     // save the user to the global variable "locals"
     res.locals.user = req.session.user;
+    res.locals.role = req.session.role;
     next();
 });
 
-// routers
+
+
+ 
+// Load the controllers into express
+const generalController = require("./controllers/generalController");
+const mealKitsController = require("./controllers/mealKitsController");
+
 app.use("/", generalController);
 app.use("/mealKits/", mealKitsController);
 

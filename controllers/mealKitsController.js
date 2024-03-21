@@ -1,4 +1,4 @@
-const mealKitUtil = require("../models/mealKit-util");
+const mealKitUtil = require("../modules/mealKit-util");
 
 const express = require('express');
 const router = express.Router();
@@ -18,10 +18,14 @@ const mealKitsByCategory = mealKitUtil.getMealKitsByCategory(allMealKits);
 
 // Setup a route to cart page
 router.get("/list", (req, res) => {
-    res.render("mealKits/list", {
-        title: "mealKit list Page"
-          
-    });
+
+    if (req.session.role === "data entry clerk") {
+        res.render("mealKits/list", {
+            title: "mealKit list Page"   
+        });
+    } else {
+        res.status(401).send("Sorry, you have no authority on this page");
+    }
 });
 
 module.exports = router;

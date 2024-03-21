@@ -1,11 +1,9 @@
-const mealKitUtil = require("../models/mealKit-util");
+const mealKitUtil = require("../modules/mealKit-util");
 const express = require('express');
 const router = express.Router();
 
 const userModel = require("../models/userModel");
 const bcryptjs = require("bcryptjs");
-
-
 
 
 // Setup a home page route
@@ -17,7 +15,6 @@ router.get("/", (req, res) => {
         css: "/CSS/home.css" 
     });   
 });
-
 
 
 router.get("/welcome", (req, res) => {
@@ -147,13 +144,13 @@ router.post("/sign-up", (req, res) => {
                         })
                         .catch(err => {
                             console.error(`Error adding user to the database: ${err}`);
-                            res.render("users/register");
+                            res.render("general/sign-up");
                         });
                 }
             })
             .catch(err => {
                 console.error(`Error finding user in the database: ${err}`);
-                res.render("users/register");
+                res.render("general/sign-up");
             });
     }
 });
@@ -165,94 +162,18 @@ router.get("/log-in", (req, res) => {
         errors: [],
         values: {
             email: "",
-            password:""
+            password: "",
+            role:""
         }  
     });
 });
-
-// router.post("/log-in", (req, res) => {
-//     const { email, password } = req.body;
-    
-//     // validate that each was specified
-//     let errors = [];
-//     userModel.findOne({
-//         email
-//     })
-//         .then(user => {
-//             // comleted the seach successfully.
-//             if (user) {
-//                 // found the user document
-            
-//                 // compare the password submitted with the document.
-//                 bcryptjs.compare(password, user.password)
-//                     .then(matched => {
-//                         // Done comparing the password, which doesn't mean they are matched
-//                         if (matched) {
-//                             //  password matched, let they log in
-
-//                             // create a new session
-//                             req.session.user = user;
-
-//                             console.log("Logged in successfully. ");
-//                             res.redirect("/welcome");
-//                         } else {
-//                             // couldn't compare the password
-//                             errors.push("Password doesn't match the database");
-//                             console.log(errors[0]);
-//                             res.render("general/log-in", {
-//                                 title: "Login page",
-//                                 errors: [],
-//                                 values: req.body
-//                             });
-//                         }
-//                     })
-//                     .catch(err => {
-//                         // couldn't compare the password
-//                         errors.push("Couldn't get the document. " + err);
-//                         console.log(errors[0]);
-//                         res.render("general/log-in", {
-//                             title: "Login page",
-//                             errors: [], 
-//                             values: req.body
-//                         });
-//                     });
-//             }
-//             else {
-//                 // couldn't find the document
-//                 errors.push("Couldn't get the document. " + err);
-//                 console.log(errors[0]);
-//                 res.render("general/log-in", { 
-//                     title: "login page",
-//                     errors: [],
-//                     values:req.body
-//                  });
-//             }
-//         })
-//         .catch(err => {
-//             errors.push("Couldn't get the document. " + err);
-//             res.render("general/log-in", { 
-//                 title: "login page",
-//                 errors: [],
-//                 values:req.body
-//              });
-//         });
-  
-// });
 
 
 // Login Route
 router.post("/log-in", (req, res) => {
     const { email, password, role } = req.body;
 
-    // Validate that each field was specified
-    if (!email || !password || !role) {
-        return res.status(400).render("general/log-in", {
-            title: "Login page",
-            errors: ["Please provide email, password, and role."],
-            values: req.body
-        });
-    }
-
+    let errors = [];
     userModel.findOne({ email })
         .then(user => {
             if (user) {
@@ -260,10 +181,13 @@ router.post("/log-in", (req, res) => {
                     .then(matched => {
                         if (matched) {
                             req.session.user = user;
+                            req.session.role = role;
+                           // console.log(`"${role}"`);
+
                             if (role === "data entry clerk") {
-                                return res.redirect("mealkits/list");
+                                return res.redirect("/mealKits/list");
                             } else if (role === "customer") {
-                                return res.redirect("general/cart");
+                                return res.redirect("/cart");
                             } else {
                                 return res.status(400).render("general/log-in", {
                                     title: "Login page",
@@ -323,10 +247,14 @@ router.get("/log-out", (req, res) => {
 
 // Setup a route to cart page
 router.get("/cart", (req, res) => {
-    res.render("general/cart", {
-        title: "cart Page"
+    if (req.session.role === "customer") {
+        res.render("general/cart", {
+            title: "cart Page"
           
-    });
+        });
+    } else {
+        res.status(401).send("Sorry, you have no authority on this page");
+    }
 });
 
 
